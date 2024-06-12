@@ -24,8 +24,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -64,7 +67,8 @@ fun FormGenerator(
 
 @Composable
 fun ShowResult(
-    shape: SolidShape
+    areaValue: Double,
+    volumeValue: Double
 ) {
     val df = DecimalFormat("#.##")
     df.roundingMode = RoundingMode.CEILING
@@ -80,7 +84,7 @@ fun ShowResult(
         )
         Spacer(modifier = Modifier.height(6.dp))
         Text(
-            text = df.format(shape.area()) + " cm2",
+            text = df.format(areaValue) + " cm2",
             style = MaterialTheme.typography.titleSmall,
             modifier = Modifier.fillMaxWidth(0.75f),
             textAlign = TextAlign.Center
@@ -93,7 +97,7 @@ fun ShowResult(
         )
         Spacer(modifier = Modifier.height(6.dp))
         Text(
-            text = df.format(shape.volume()) + " cm3",
+            text = df.format(volumeValue) + " cm3",
             style = MaterialTheme.typography.titleSmall,
             modifier = Modifier.fillMaxWidth(0.75f),
             textAlign = TextAlign.Center
@@ -107,6 +111,8 @@ fun FormCalc(
     calcNow: MutableState<Boolean>
 ) {
     val pattern = remember { Regex("^\\d+\$") }
+    var areaCalc: Double by remember { mutableDoubleStateOf(shape.area()) }
+    var volumeCalc: Double by remember { mutableDoubleStateOf(shape.volume()) }
     when(shape) {
         is SolidShape.Cone -> {
             val arcString: MutableState<String> = remember { mutableStateOf("") }
@@ -132,8 +138,10 @@ fun FormCalc(
                         shape.arc = arcString.value.toDouble()
                         shape.height = heightString.value.toDouble()
                         shape.hypot = hypot(shape.arc, shape.height)
+                        areaCalc = shape.area()
+                        volumeCalc = shape.volume()
                     }
-                    ShowResult(shape = shape)
+                    ShowResult(areaValue = areaCalc, volumeValue = volumeCalc)
                 }
             }
         }
@@ -153,8 +161,10 @@ fun FormCalc(
                 if(calcNow.value) {
                     if(rusukString.value.isNotEmpty()) {
                         shape.rusuk = rusukString.value.toDouble()
+                        areaCalc = shape.area()
+                        volumeCalc = shape.volume()
                     }
-                    ShowResult(shape = shape)
+                    ShowResult(areaValue = areaCalc, volumeValue = volumeCalc)
                 }
             }
         }
@@ -184,8 +194,10 @@ fun FormCalc(
                         shape.width = widthString.value.toDouble()
                         shape.height = heightString.value.toDouble()
                         shape.length = lengthString.value.toDouble()
+                        areaCalc = shape.area()
+                        volumeCalc = shape.volume()
                     }
-                    ShowResult(shape = shape)
+                    ShowResult(areaValue = areaCalc, volumeValue = volumeCalc)
                 }
             }
         }
@@ -207,8 +219,10 @@ fun FormCalc(
                     if(archString.value.isNotEmpty() && heightString.value.isNotEmpty()) {
                         shape.arc = archString.value.toDouble()
                         shape.height = heightString.value.toDouble()
+                        areaCalc = shape.area()
+                        volumeCalc = shape.volume()
                     }
-                    ShowResult(shape = shape)
+                    ShowResult(areaValue = areaCalc, volumeValue = volumeCalc)
                 }
             }
         }
@@ -232,8 +246,10 @@ fun FormCalc(
                         shape.height = heightString.value.toDouble()
                         shape.lsa = 8 * (shape.baseEdge * shape.height)
                         shape.mult = ((1 + sqrt(2.0)) * shape.baseEdge.pow(2))
+                        areaCalc = shape.area()
+                        volumeCalc = shape.volume()
                     }
-                    ShowResult(shape = shape)
+                    ShowResult(areaValue = areaCalc, volumeValue = volumeCalc)
                 }
             }
         }
@@ -257,8 +273,10 @@ fun FormCalc(
                         shape.height = heightString.value.toDouble()
                         shape.aob = shape.baseWidth.pow(2)
                         shape.hypot = hypot((shape.baseWidth/2), shape.height)
+                        areaCalc = shape.area()
+                        volumeCalc = shape.volume()
                     }
-                    ShowResult(shape = shape)
+                    ShowResult(areaValue = areaCalc, volumeValue = volumeCalc)
                 }
             }
         }
@@ -278,8 +296,10 @@ fun FormCalc(
                 if(calcNow.value) {
                     if(arcString.value.isNotEmpty()) {
                         shape.arc = arcString.value.toDouble()
+                        areaCalc = shape.area()
+                        volumeCalc = shape.volume()
                     }
-                    ShowResult(shape = shape)
+                    ShowResult(areaValue = areaCalc, volumeValue = volumeCalc)
                 }
             }
         }
