@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">UjianTS</string>
+    <string name="geometry_desc">Bangun ruang suatu bangunan tiga dimensi yang memiliki ruang atau volume dan juga sisi yang membatasinya</string>
+    <string name="geometry_title">Bangun Ruang</string>
+    <string name="appTitle">Ujian Tengah Semester</string>
+    <string name="appSubject">Pemrograman Mobile</string>
+    <string name="tutor_desc">Beragam video pembelajaran tentang bangun ruang</string>
+    <string name="tutorTitle">Video Pembelajaran</string>
+    <string name="shape_cube_desc">Sebuah kotak dengan 6 sisi persegi.</string>
+    <string name="shape_cubeoid_desc">Sebuah kotak yang terdiri dari 3 pasang persegi yang berbeda.</string>
+    <string name="shape_cylinder_desc">Bangun ruang yang dibentuk oleh dua buah lingkaran identik yang sejajar dan sebuah persegi panjang.</string>
+    <string name="shape_cone_desc">Bangun ruang dengan alas lingkaran yang meruncing keatas.</string>
+    <string name="shape_sphere_desc">Lingkaran dengan bulatan yang sempurna</string>
+    <string name="shape_limas_desc">Bangun ruang dengan alas polygon yang dihubungkan dengan sisi segitiga
+   yang memuncak ke-atas.</string>
+    <string name="shape_octPrism_desc">Prisma yang dibatasi oleh 2 alas segi delapan dan 8 persegi panjang</string>
+    <string name="videoTitle1">Materi lengkap Volume bangun ruang.</string>
+    <string name="videoTitle2">BRSD(1) Unsur kubus, kerangka kubus, Membuat kerangka kubus.</string>
+    <string name="videoTitle3">BRSD(2) Volume Kubus, Luas Permukaan Kubus.</string>
+    <string name="videoTitle4">BRSD (3) - Unsur Balok, Kerangka Balok, Diagonal Balok, Diagonal Ruang Balok.</string>
+    <string name="videoTitle5">BRSD (4) - Luas Permukaan Balok, Volume Balok</string>
+    <string name="videoTitle6">Triangular Prism - Volume, Surface Area, Base and Lateral Area Formula, Basic Geometry</string>
+    <string name="videoTitle7">3D Shapes - Faces, Edges, and Vertices - Euler\'s Formula - Geometry</string>
+</resources>
