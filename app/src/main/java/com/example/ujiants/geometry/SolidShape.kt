@@ -1,14 +1,10 @@
 package com.example.ujiants.geometry
 
-import android.os.Parcelable
-import kotlinx.parcelize.IgnoredOnParcel
-import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
 import kotlin.math.pow
 
 @Serializable
-@Parcelize
-sealed class SolidShape: Geometricable, Parcelable {
+sealed class SolidShape: Geometricable {
     @Serializable
     data class Cube(
         override val name: String = "Kubus",
@@ -119,9 +115,7 @@ sealed class SolidShape: Geometricable, Parcelable {
         var baseWidth: Double = 0.0,
     ): SolidShape()
     {
-        @IgnoredOnParcel
         var aob: Double = 0.0
-        @IgnoredOnParcel
         var hypot: Double = 0.0
 
         override fun area(): Double {
@@ -142,9 +136,7 @@ sealed class SolidShape: Geometricable, Parcelable {
         var height: Double = 0.0
     ): SolidShape()
     {
-        @IgnoredOnParcel
         var lsa: Double = 0.0
-        @IgnoredOnParcel
         var mult: Double = 0.0
 
         override fun area(): Double {

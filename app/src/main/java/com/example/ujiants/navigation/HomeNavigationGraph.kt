@@ -6,14 +6,10 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.toRoute
 import com.example.ujiants.GeometryScreen
 import com.example.ujiants.HomeScreen
 import com.example.ujiants.ProfileScreen
-import com.example.ujiants.ShapeScreenLayout
 import com.example.ujiants.TutorScreen
-import com.example.ujiants.geometry.SolidShape
-import kotlin.reflect.typeOf
 
 @Composable
 fun HomeNavigationGraph() {
@@ -66,13 +62,18 @@ fun HomeNavigationGraph() {
         ) { TutorScreen() }
 
 
-        composable<GeometryList> { GeometryScreen() }
+        composable<GeometryList>(
+            enterTransition = {
+                return@composable slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start, tween(1000)
+                )
+            },
+            popExitTransition = {
+                return@composable slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(500)
+                )
+            }
+        ) { GeometryScreen() }
 
-        composable<GeometricShape>(
-            typeMap = mapOf(typeOf<SolidShape>() to ShapeParameterType)
-        ) { backStackEntry ->
-            val (shape) = backStackEntry.toRoute<GeometricShape>()
-            ShapeScreenLayout(shape = shape)
-        }
     }
 }
