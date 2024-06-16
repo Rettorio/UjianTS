@@ -1,5 +1,8 @@
 package com.example.ujiants.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -20,10 +23,51 @@ fun HomeNavigationGraph() {
         navController = navController,
         startDestination = Home
     ) {
-        composable<Home> { HomeScreen() }
-        composable<Profile> { ProfileScreen() }
-        composable<Tutor> { TutorScreen() }
+        composable<Home>(
+            enterTransition = {
+                return@composable fadeIn(tween(1000))
+            },
+            exitTransition = {
+                return@composable slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start, tween(200)
+                )
+            },
+            popEnterTransition = {
+                return@composable slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(700)
+                )
+            }
+        ) { HomeScreen() }
+
+        composable<Profile>(
+            enterTransition = {
+                return@composable slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start, tween(1000)
+                )
+            },
+            popExitTransition = {
+                return@composable slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(500)
+                )
+            }
+        ) { ProfileScreen() }
+
+        composable<Tutor>(
+            enterTransition = {
+                return@composable slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start, tween(1000)
+                )
+            },
+            popExitTransition = {
+                return@composable slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(500)
+                )
+            }
+        ) { TutorScreen() }
+
+
         composable<GeometryList> { GeometryScreen() }
+
         composable<GeometricShape>(
             typeMap = mapOf(typeOf<SolidShape>() to ShapeParameterType)
         ) { backStackEntry ->

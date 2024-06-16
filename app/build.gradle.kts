@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.ujiants"
-        minSdk = 30
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -61,8 +61,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation("androidx.compose.material:material-icons-extended")
-    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
+    implementation(libs.androidx.compose.animation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,6 +69,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.material.icon)
+    implementation(libs.youtube.player)
 
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
