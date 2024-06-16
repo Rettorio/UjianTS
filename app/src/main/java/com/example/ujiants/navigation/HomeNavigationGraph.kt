@@ -25,12 +25,12 @@ fun HomeNavigationGraph() {
             },
             exitTransition = {
                 return@composable slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Start, tween(200)
+                    AnimatedContentTransitionScope.SlideDirection.Start, tween(400)
                 )
             },
             popEnterTransition = {
                 return@composable slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.End, tween(700)
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(350)
                 )
             }
         ) { HomeScreen() }
@@ -38,12 +38,12 @@ fun HomeNavigationGraph() {
         composable<Profile>(
             enterTransition = {
                 return@composable slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Start, tween(1000)
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(400)
                 )
             },
             popExitTransition = {
                 return@composable slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.End, tween(500)
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(350)
                 )
             }
         ) { ProfileScreen() }
@@ -51,12 +51,12 @@ fun HomeNavigationGraph() {
         composable<Tutor>(
             enterTransition = {
                 return@composable slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Start, tween(1000)
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(400)
                 )
             },
             popExitTransition = {
                 return@composable slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.End, tween(500)
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(350)
                 )
             }
         ) { TutorScreen() }
@@ -65,12 +65,12 @@ fun HomeNavigationGraph() {
         composable<GeometryList>(
             enterTransition = {
                 return@composable slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Start, tween(1000)
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(400)
                 )
             },
             popExitTransition = {
                 return@composable slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.End, tween(500)
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(350)
                 )
             }
         ) { GeometryScreen() }
