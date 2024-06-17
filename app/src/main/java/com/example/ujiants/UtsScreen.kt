@@ -18,19 +18,13 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Android
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TooltipBox
-import androidx.compose.material3.TooltipDefaults
-import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -45,7 +39,6 @@ import com.example.ujiants.navigation.LocalNavController
 import com.example.ujiants.navigation.Profile
 import com.example.ujiants.navigation.Tutor
 import com.example.ujiants.ui.theme.UjianTSTheme
-import kotlinx.coroutines.launch
 
 data class CardContent(
     var imageId: Int,
@@ -62,7 +55,6 @@ fun HomeScreen() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreenContent(modifier: Modifier = Modifier) {
     val navController = LocalNavController.current
@@ -87,22 +79,12 @@ fun HomeScreenContent(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.End
         ) {
-            TooltipBox(
-                positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
-                tooltip = {
-                          PlainTooltip {
-                              Text("Profile")
-                          }
-                },
-                state = rememberTooltipState()
-            ) {
-                FilledTonalIconButton(onClick = { navController.navigate(Profile) }) {
-                    Icon(
-                        imageVector = Icons.Filled.Person,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSecondaryContainer
-                    )
-                }
+            FilledTonalIconButton(onClick = { navController.navigate(Profile) }) {
+                Icon(
+                    imageVector = Icons.Filled.Person,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSecondaryContainer
+                )
             }
         }
         Spacer(modifier = Modifier.height(12.dp))
@@ -181,29 +163,15 @@ fun ImageCardPreview() {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBadge() {
-    val tooltipState = rememberTooltipState()
-    val scope = rememberCoroutineScope()
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        TooltipBox(
-            positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
-            tooltip = {
-                      PlainTooltip {
-                          Text(text = "App made with 💖 by myself :)")
-                      }
-            }, state = tooltipState) {}
         FilledTonalButton(
-            onClick = { scope.launch { tooltipState.show() } }
+            onClick = {  }
         ) {
             Icon(imageVector = Icons.Outlined.Android, contentDescription = null)
             Spacer(modifier = Modifier.width(8.dp))
             Text(text = stringResource(R.string.appSubject), style = MaterialTheme.typography.labelMedium)
         }
-    }
 }
 
 @Preview(showBackground = true, heightDp = 300, widthDp = 300)
