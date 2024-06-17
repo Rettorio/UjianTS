@@ -10,16 +10,18 @@ sealed class SolidShape: Geometricable {
         override val name: String = "Kubus",
         override val description: String,
         override val imageId: Int,
-        var rusuk: Double = 0.0
+        var rusukLength: Double = 0.0,
+        override val sisi: Int = 6,
+        override val rusuk: Int = 12,
     ): SolidShape()
     {
 
         override fun area(): Double {
-            return rusuk.pow(2) * 6.0
+            return rusukLength.pow(2) * 6.0
         }
 
         override fun volume(): Double {
-            return rusuk.pow(3)
+            return rusukLength.pow(3)
         }
     }
 
@@ -28,6 +30,8 @@ sealed class SolidShape: Geometricable {
         override val name: String = "Tabung",
         override val description: String,
         override val imageId: Int,
+        override val sisi: Int = 3,
+        override val rusuk: Int = 2,
         val phi: Double = Math.PI,
         var arc: Double = 0.0,
         var height: Double = 0.0
@@ -49,6 +53,8 @@ sealed class SolidShape: Geometricable {
         override val name: String = "Kerucut",
         override val description: String,
         override val imageId: Int,
+        override val sisi: Int = 2,
+        override val rusuk: Int = 1,
         val phi: Double = Math.PI,
         var arc: Double = 0.0,
         var hypot: Double = 0.0,
@@ -70,6 +76,8 @@ sealed class SolidShape: Geometricable {
         override val name: String = "Bola",
         override val description: String,
         override val imageId: Int,
+        override val sisi: Int = 1,
+        override val rusuk: Int = 0,
         var arc: Double = 0.0,
         val phi: Double = Math.PI
     ): SolidShape()
@@ -89,6 +97,8 @@ sealed class SolidShape: Geometricable {
         override val name: String = "Balok",
         override val description: String,
         override val imageId: Int,
+        override val sisi: Int = 6,
+        override val rusuk: Int = 12,
         var width: Double = 0.0,
         var height: Double = 0.0,
         var length: Double = 0.0
@@ -111,6 +121,8 @@ sealed class SolidShape: Geometricable {
         override val name: String = "Limas Segi-Empat",
         override val description: String,
         override val imageId: Int,
+        override val sisi: Int = 5,
+        override val rusuk: Int = 8,
         var height: Double = 0.0,
         var baseWidth: Double = 0.0,
     ): SolidShape()
@@ -132,6 +144,8 @@ sealed class SolidShape: Geometricable {
         override val name: String = "Octagonal Prism",
         override val description: String,
         override val imageId: Int,
+        override val sisi: Int = 10,
+        override val rusuk: Int = 24,
         var baseEdge: Double = 0.0,
         var height: Double = 0.0
     ): SolidShape()
